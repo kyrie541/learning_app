@@ -1,3 +1,5 @@
+<div>Quote of The Day: <span id="quoteOfTheDay"></span></div>
+
 <div class="row" style="padding-top:2%">
 <div class="col"></div>
 <div class="col-md-8 text-center" >
@@ -5,10 +7,22 @@
 
 <div class="jumbotron">
 
-	<h1>Welcome to my Blog</h1>
-	<p><%= link_to 'Read My Blog', articles_path, class: 'btn btn-lg btn-welcome' %></p>
+	<h1>Welcome to KKK Academy!</h1>
+	<p><%= link_to 'View My Lesson', articles_path, class: 'btn btn-lg btn-welcome' %></p>
 </div> <!-- jumbotron -->
 </div> <!-- .col-md-7 -->
 <div class="col"></div>
 </div> <!-- .row -->
+
+<script>
+  var url = 'http://quotes.rest/qod.json?category=life'
+    $.getJSON(url)
+    .done(function(data){
+      // console.log(data['contents']['quotes'][0]['quote']);
+      $('#quoteOfTheDay').html(data['contents']['quotes'][0]['quote']);
+    });
+
+    // $('#quoteOfTheDay').html("wakakaka");
+
+</script>
 

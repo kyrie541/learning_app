@@ -1,7 +1,7 @@
-<h2>Comments</h2>
+<h2>Q & A</h2>
 <% @article.comments.each do |comment| %>
 	<p>
-		<strong>Commenter:</strong>
+		<strong>Question:</strong>
 		<%= comment.commenter %>
 	</p>
 		<%= comment.created_at.strftime('%A %-b %-d, %Y |%l :%M %p') %>
@@ -10,7 +10,7 @@
 	</p>
 
 	<p>
-		<strong>Comment</strong>
+		<strong>Body:</strong>
 		<%= comment.body %>
 	</p>
 

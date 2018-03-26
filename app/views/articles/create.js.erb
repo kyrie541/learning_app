@@ -1,0 +1,6 @@
+$('#profile-tab').addClass("active");
+$('#edit-tab').removeClass("active");
+
+$('#myTabContent').empty().append('<%= j render "articles/show_all_articles" %>');
+
+$(".form-control").val('');

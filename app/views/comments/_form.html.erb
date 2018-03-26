@@ -1,17 +1,17 @@
 <!-- Form Partial for Comments -->
-<h4>Add Comment</h4>
+<h4>Add Question</h4>
 <%= form_for([@article, @article.comments.build]) do |f| %>
 <div class="field" style="100%;" >
 	<p>
-		<%= f.label :commenter %><br>
+		<%= f.label :Question %><br>
 		<%= f.text_field :commenter, class: 'form-control' %>
 	</p>
 	<p>
-		<%= f.label :body %><br>
+		<%= f.label :Body %><br>
 		<%= f.text_area :body, class: 'form-control' %>
 	</p>
 	<p>
-		<%= f.submit class: 'btn btn-lg btn-success' %>
+		<%= f.submit "Ask me now!", class: 'btn btn-lg btn-success' %>
 	</p>
 </div>	
 <% end %>

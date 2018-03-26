@@ -1,0 +1,47 @@
+<div class="tab-pane overflow fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <table class="table table-hover table-striped table-responsive-xs">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+    <% if current_user && current_user.admin? %>
+      <th colspan = "3">Editing Options</th>
+    <% else %>
+      <th colspan = "1">Show Article</th>
+    <% end %>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @articles.each do |article| %> 
+      <tr>
+        <td>
+          <%= article.title %> 
+        </td>
+        <td>
+           <%= truncate(article.text, length: 75) %>
+        </td>
+        <td> 
+          <%= link_to 'Show', article_path(article), class: 'btn btn-sm btn-info' %>
+        </td>
+        <% if current_user && current_user.admin? %>
+        <td> 
+          <%= link_to 'Edit', edit_article_path(article), remote: true, class: 'btn btn-sm btn-warning' %>
+        </td>
+        <td> 
+          <%= link_to 'Delete', article_path(article), 
+            remote: true,
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you certain???'}  %>
+        </td>
+        <% end %> 
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render "articles/create_article_form" %>
+
+<%= render "articles/quotes" %>

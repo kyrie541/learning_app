@@ -1,0 +1,33 @@
+<div class="col"></div>
+<div class="col-md-10">
+
+<div class="col-lg-7 order-lg-2 div-wrapper" style="margin-left: 2em">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">List of All Lesson</a>
+        </li>
+        
+        <% if current_user && current_user.admin? %>
+            <li class="nav-item">
+                <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Create a New Lesson</a>
+            </li>
+        <% end %>
+
+        <li class="nav-item">
+            <a class="nav-link" id="quote-tab" data-toggle="tab" href="#quote" role="tab" aria-controls="quote" aria-selected="false">Quote</a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content" id="myTabContent">
+  
+  <%= render  "articles/show_all_articles" %>
+  
+</div>
+
+
+
+<p><%= link_to 'Home', welcome_index_path, class: 'btn btn-md btn-primary' %></p>
+
+</div> <!-- .col-md-10 -->
+<div class="col"></div>

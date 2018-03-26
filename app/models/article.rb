@@ -6,8 +6,8 @@ class Article < ApplicationRecord
 			  length: {minimum: 2}
 
 	def self.search(params)
-		articles = Article.where("text LIKE ? or title LIKE ?", "%#{params[:search]}%", 
-			"%#{params[:search]}%") if params[:search].present?
+		articles = Article.where("lower(text) LIKE ? or lower(title) LIKE ?", "%#{params[:search].downcase}%", 
+			"%#{params[:search].downcase}%") if params[:search].present?
 		articles #returns the articles containing the searching words
 	end
 end

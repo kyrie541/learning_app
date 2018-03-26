@@ -6,6 +6,7 @@ before_action :admin_authorize, :except => [:index, :show, :search]
 
 	def index
 		@articles = Article.all
+		@article = Article.new
 	end
 
 	def new
@@ -18,6 +19,9 @@ before_action :admin_authorize, :except => [:index, :show, :search]
 
 	def edit
 		@article = Article.find(params[:id])
+		respond_to do |format|
+      format.js
+    end	
 	end
 
 	def search
@@ -31,7 +35,10 @@ before_action :admin_authorize, :except => [:index, :show, :search]
 	def update
 		@article = Article.find(params[:id])
 		if @article.update(article_params)
-			redirect_to @article
+			@articles = Article.all
+			respond_to do |format|
+	      format.js
+	    end	
 		else
 			render 'edit'
 		end
@@ -41,16 +48,23 @@ before_action :admin_authorize, :except => [:index, :show, :search]
 		# render plain:params[:article].inspect
 		@article = Article.new(article_params)
 		if @article.save
-			redirect_to @article
+			@articles = Article.all
+			respond_to do |format|
+	      format.js
+	    end
 		else
-			render 'new'
+			p "error"
 		end
 	end
 
 	def destroy
 		@article = Article.find(params[:id])
-		@article.destroy
-		redirect_to articles_path
+		if @article.destroy
+			@articles = Article.all
+			respond_to do |format|
+		    format.js
+		  end
+		end
 	end
 
 private
