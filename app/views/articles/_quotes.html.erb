@@ -21,6 +21,7 @@
     $.getJSON(url)
     .done(function(data){
       $('#quote1').html(data[0]["content"]);
+      console.log(data[0]["content"]);
     });
   });
 
