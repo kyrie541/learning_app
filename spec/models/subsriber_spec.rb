@@ -12,7 +12,7 @@ RSpec.describe Subsriber, type: :model do
   end
 
   it 'ensures email presence' do
-    subscriber = Subsriber.new(f_name: 'sample', l_name: 'sample@gmail.com', country: 'Countr1').save
+    subscriber = Subsriber.new(f_name: 'sample', l_name: 'sample', country: 'Countr1').save
     expect(subscriber).to eq(false)
   end
 

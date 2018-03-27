@@ -11,7 +11,7 @@ RSpec.describe "CreateNewUsers", type: :request do
       fill_in "Confirm Password", with: "password"
       click_button "Create Account"
       expect(page).to have_current_path(articles_path)
-      expect(page).to have_content "You successfully created an account!"
+      expect(page).to have_content "Welcome asdfgh! You successfully created an account!"
     end
   end
 end
